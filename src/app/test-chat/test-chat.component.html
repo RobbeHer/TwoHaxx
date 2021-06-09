@@ -1,0 +1,8 @@
+<p>test-chat works!</p>
+<button (click)="goroom('testRoom1')">Room 1</button>
+<button (click)="goroom('testRoom2')">Room 2</button>
+<p>je bent in "{{room}}"</p>
+<button (click)="send()">send</button>
+<div>
+    <p *ngFor="let msg of berichten">{{msg}}</p>
+</div>

@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+        <div class="card card-signin my-3 ">
+          <div class="card-body">
+  
+            <div class="row align-items-center">
+              <div class="col-10"><h5 class="card-title">Polls Overview</h5></div>
+              <div class="col-2"><a [routerLink]="['add']"><i class="far fa-plus-square fa-2x"></i></a></div>
+              <!-- <div class="col-2"><a><i class="far fa-plus-square fa-2x"></i></a></div> -->
+            </div>
+  
+            <div class="card my-2" *ngFor="let poll of polls">
+              <div class="card-header">
+                <div class="row align-items-center ">
+                  <div class="col-auto mr-auto">
+                    {{poll.Name}}
+                  </div>
+                  <!-- <div class="col-auto"><a class="btn btn-sm btn-primary">More</a></div> -->
+                  <button (click)="toggleVisabilityPoll(poll.PollID)" class="col-auto btn btn-sm btn-primary">{{poll.IsAvailable ? "Hide" : "Show"}}</button>
+                  <div class="col-auto"><a [routerLink]="['edit/', poll.PollID]"><i class="fas fa-edit"></i></a></div>
+                  <div class="col-auto"><a (click)="deletePoll(poll.PollID)"><i class="far fa-trash-alt"></i></a></div>
+                </div>
+              </div>
+              <ul class="list-group list-group-flush" >
+                <li class="list-group-item">
+                    <p>{{poll.Question}}</p>
+                    <div *ngFor="let pollOption of poll.PollOptions">
+                      {{pollOption.Content}} ({{pollOption.Votes}} votes)
+                    </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

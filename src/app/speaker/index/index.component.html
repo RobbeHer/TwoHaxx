@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+        <div class="card card-signin my-3 ">
+          <div class="card-body">
+  
+            <div class="row align-items-center">
+              <div class="col-10"><h5 class="card-title">Talks overview</h5></div>
+              <!-- <div class="col-2"><a [routerLink]="['add']"><i class="far fa-plus-square fa-2x"></i></a></div> -->
+            </div>
+  
+            <div class="card my-2" *ngFor="let talk of talks">
+              <div class="card-header">
+                <div class="row align-items-center ">
+                  <div class="col-auto mr-auto">{{talk.name}}
+                      <br>
+                      {{talk.startDate.split('T')[1].slice(0, 5)}} - {{talk.endDate.split('T')[1].slice(0, 5)}}
+                    <br>
+                    {{talk.description}}
+                  </div>
+                  <!-- <div class="col-auto"><a class="btn btn-sm btn-primary">More</a></div>  -->
+                  <div class="col-auto"><a [routerLink]="['/speaker/polls']" class="btn btn-sm btn-primary">See polls</a></div> 
+                </div>
+              </div>
+              <!-- <ul class="list-group list-group-flush" >
+                <li class="list-group-item">
+                    {{talk.startDate.split('T')[1].slice(0, 5)}} - {{talk.endDate.split('T')[1].slice(0, 5)}}
+                    <br>
+                    {{talk.description}}
+                </li>
+              </ul> -->
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>

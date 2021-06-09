@@ -1,0 +1,48 @@
+<!-- <div class="container">
+  <h5 class="mt-3">Overview rooms</h5>
+  <small class="text-light">(Scroll to see more rooms)</small>
+  <div class="row scrollable">
+    <div class="col-lg-4" *ngFor="let room of (rooms | async)">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{room.name}}</h5>
+          <p class="card-text">{{room.description}}</p>
+          <p class="card-text">Start date: {{room.startdate}} - End date: {{room.enddate}}</p>
+          <a [routerLink]="['/listener-join-room/', room.roomID]" class="btn btn-primary">Go to room</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+      <div class="card card-signin my-3 ">
+        <div class="card-body">
+
+          <div class="row align-items-center">
+            <div class="col-10"><h5 class="card-title">Rooms overview</h5></div>
+            <!-- <div class="col-2"><a [routerLink]="['add']"><i class="far fa-plus-square fa-2x"></i></a></div> -->
+          </div>
+
+          <div class="card my-2" *ngFor="let room of rooms">
+            <div class="card-header">
+              <div class="row align-items-center ">
+                <div class="col-auto mr-auto">{{room.name}}</div>
+                <div class="col-auto"><a [routerLink]="['/listener-join-room/', room.roomID]" class="btn btn-sm btn-primary">Go to room</a></div> 
+              </div>
+            </div>
+            <ul class="list-group list-group-flush" >
+              <li class="list-group-item">
+                {{room.description}}
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

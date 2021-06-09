@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+      <div class="card card-signin my-3">
+        <div class="card-body">
+
+          <h5 class="card-title pb-2">Planning details</h5>
+
+          <div class="card my-2">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-9">{{planning.name}}</div>
+              </div>           
+            </div>
+            <ul class="list-group list-group-flush" *ngFor="let talk of planning.talks">
+              <div class="row m-2">
+                <div class="col-auto mr-auto">{{talk.name}}</div>
+                <div class="col-auto"><a [routerLink]="['/admin/planning/room/' + planning.roomID + '/talk/edit/' + talk.talkID]"><i class="fas fa-edit"></i></a> &nbsp;<a (click)="deleteTalk(talk.talkID)"><i class="far fa-trash-alt"></i> </a></div>
+              </div> 
+            </ul>
+          </div>
+
+          <a [routerLink]="['/admin/planning/room/' + planning.roomID + '/talk/add']" type="submit" class="btn btn-primary btn-block text-uppercase w-100 text-white mb-2">Add Talk</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+

@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="card mt-3">
+    <div class="card-body">
+      <h4 class="text-center mb-3">Polls</h4>
+      <div *ngFor="let poll of polls">
+        <h6 class="mt-2">{{poll.Question}}</h6>
+        <div *ngFor="let pollOption of poll.PollOptions">
+
+          <div *ngIf="!userFoundInVotedBy(poll)">
+          <button class="btn btn-primary mb-2" [disabled]="userFoundInVotedBy(poll)"
+            (click)="voteOnPollOption(poll.PollID, pollOption.PollOptionID)">{{pollOption.Content}}
+            ({{pollOption.Votes}} votes)</button>
+          </div>
+
+          <!-- <p>{{pollOption.Content}} ({{pollOption.Votes}} votes)</p> -->
+          <div class="" *ngIf="userFoundInVotedBy(poll)">
+            <div class="progress m-2" style="height: 30px;">
+              <div class="progress-bar " role="progressbar"
+                [ngStyle]="progressBarCalculateVotesOfPollOption(poll.PollID, pollOption.PollOptionID)">
+                {{pollOption.Content}}
+                ({{pollOption.Votes}} votes)
+              </div>
+            </div>
+            <!-- <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="progressBarCalculateVotesOfPollOption(poll.PollID, pollOption.PollOptionID)" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                  <span class="sr-only">{{pollOption.Content}} ({{pollOption.Votes}} votes)</span>
+                </div>
+              </div> -->
+            <!-- <div class="progress">
+              <div [disabled]="userFoundInVotedBy(poll)"
+                (click)="voteOnPollOption(poll.PollID, pollOption.PollOptionID)" class="progress-bar" role="progressbar"
+                style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{pollOption.Content}}
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

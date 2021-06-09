@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+      <div class="card card-signin my-3 ">
+        <div class="card-body">
+
+          <div class="row align-items-center">
+            <div class="col-10">
+              <h5 class="card-title">{{room.name}}</h5>
+            </div>
+          </div>
+
+          <div>{{room.description}}</div>
+
+          <div class="card my-2">
+            <ul class="list-group list-group-flush" *ngFor="let talk of room.talks">
+              <div class="row align-items-center m-2">
+                <div class="col-auto mr-auto">{{talk.name}}</div>
+                <div class="col-auto"><a class="btn btn-sm btn-primary"  [routerLink]="['/moderator/', talk.talkID]" *ngIf="user.userID == talk.moderatorID">Edit</a></div>
+                <div class="col-auto"><a class="btn btn-sm btn-primary"  [routerLink]="['/speaker/polls/', talk.talkID]" *ngIf="user.userID == talk.talkerID">Edit</a></div>
+                <div class="col-auto"><a class="btn btn-sm btn-primary"  [routerLink]="['/chatroom/', talk.talkID]">Join</a></div>
+              </div>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,36 @@
+<div class="container">   
+    <div class="row align-middle">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Sign In</h5>
+
+            <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" class="form-signin">
+              <div class="form-label-group">
+                <input type="text" id="email" class="form-control" placeholder="Email" required formControlName="email">
+                <label for="email">Email</label>
+              </div>
+
+              <div class="form-label-group">
+                <input type="password" id="password" class="form-control" placeholder="Password" required formControlName="password">
+                <label for="password">Password</label>
+              </div>
+
+              <div class="text-center">
+                <p class="alert alert-warning" *ngIf="showErrorMessage">{{errorMessage}}</p>
+              </div>
+
+              <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase w-100" [disabled]="!signInForm.valid || submitted">Login</button>
+              <hr class="my-4">
+
+              <div class="text-center">
+                <!--<a class="text-black" href="/guest-sign-in">Log in as guest</a><br>-->
+                <a class="text-black" href="/sign-up">Create an account</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>  
+      <div class="text-center"><img src="./assets/img/logo_axxes_new.png" class="img-fluid text-center" width="25%" alt="Responsive image"></div>
+    </div>
+  </div>

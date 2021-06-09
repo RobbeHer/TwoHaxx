@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="card mt-3">
+    <div class="card-body">
+      <h4 class="text-center mb-3">Manage Listeners</h4>
+      <div class="list-group">
+        <li class="list-group-item title">Rooms</li>
+        <div *ngFor="let room of rooms">
+          <a [routerLink]="['/moderator-kick-listeners/', room.roomID]" class="list-group-item list-group-item-action">{{room.name}}
+            <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

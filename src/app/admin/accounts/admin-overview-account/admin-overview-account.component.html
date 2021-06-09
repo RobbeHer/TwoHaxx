@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+      <div class="card card-signin my-3">
+        <div class="card-body">
+
+          <h5 class="card-title pb-2">Account details</h5>
+
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th style="width: 30%">User ID</th>
+                <td>{{user.userID}}</td>
+              </tr>
+              <tr>
+                <th style="width: 30%">First name</th>
+                <td>{{user.firstName}}</td>
+              </tr>
+              <tr>
+                <th style="width: 30%">Last name</th>
+                <td>{{user.lastName}}</td>
+              </tr>
+              <tr>
+                <th style="width: 30%">Email</th>
+                <td>{{user.email}}</td>
+              </tr>
+              <tr>
+                <th style="width: 30%">Password</th>
+                <td>{{user.password}}</td>
+              </tr>
+              <tr>
+                <th style="width: 30%">Admin?</th>
+                <td>{{user.isAdmin}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- <td><a [routerLink]="['edit/', user.userID]"><i class="fas fa-edit"></i></a></td>
+          <td><a (click)="deleteUser(user.userID)"><i class="far fa-trash-alt"></i></a></td> -->
+          <a [routerLink]="['/admin/accounts/edit/', user.userID]" type="submit"
+            class="btn btn-primary btn-block text-uppercase w-100 text-white mb-2">Edit account</a>
+          <button [disabled]="user.isAdmin" class="btn btn-outline-primary btn-block text-uppercase w-100"
+            (click)="modalOpen(content)">Delete account</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Delete account:</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure to delete user? <br>
+      Name: <span class="font-weight-bold">{{user.firstName}} {{user.lastName}}</span> <br>
+      Email: <span class="font-weight-bold"> {{user.email}}</span></p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger w-100"
+      (click)="modal.close('Pressed delete user button')">Delete</button>
+  </div>
+</ng-template>

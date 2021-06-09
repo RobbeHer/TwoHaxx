@@ -1,0 +1,66 @@
+<app-listener-chat [talkID]="talkID" *ngIf="selectedTab == 'app-listener-chat'"></app-listener-chat>
+<app-listener-open-question [talkID]="talkID" *ngIf="selectedTab == 'app-listener-open-question'"></app-listener-open-question>
+<app-listener-answer-polls [talkID]="talkID" *ngIf="selectedTab == 'app-listener-answer-polls'"></app-listener-answer-polls>
+
+<footer class="footer mt-auto bg-light ">
+    <div class="container">
+      <div class="row text-center align-items-center">
+        <div class="col-4">
+          <a (click)="showComponent('app-listener-chat')">
+            <i class="far fa-comments fa-2x"></i> 
+            <p>Chat</p>
+          </a>
+        </div>
+        <div class="col-4">
+          <a (click)="showComponent('app-listener-open-question')">
+            <i class="fas fa-comment-alt fa-2x"></i>
+            <p>Questions</p>
+          </a>
+        </div>
+        <div class="col-4">
+          <a (click)="showComponent('app-listener-answer-polls')">
+            <i class="fas fa-poll fa-2x"></i>
+            <p>Polls</p>
+          </a>
+        </div>
+      </div>
+    </div>
+</footer>
+
+<!-- Modal -->
+<ng-template #talkCodeModal let-modal>
+    <div class="modal-header" data-target="#modal">
+      <h4 class="modal-title" id="talk-code-modal-title">Join Talk</h4>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="talkCodeForm">
+        <div class="form-group">
+          <label for="code">Access Code</label>
+          <input id="code" class="form-control" type="text" formControlName="code">
+        </div>
+      </form>
+      <button (click)="modal.close('Pressed join talk button')" 
+          class="btn btn btn-primary btn-block w-100 text-uppercase text-white" 
+          [disabled]="!talkCodeForm.valid || talkCodeButtonSubmitted">Join</button>
+    </div>
+</ng-template>
+
+
+<!-- Modal -->
+<ng-template #warningModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="warning-modal-title">Warning</h4>
+    </div>
+    <div class="modal-body text-center">
+        <p><strong>The code was incorrect</strong></p>
+        <br>
+        <button (click)="modal.close('Pressed close warning button')"
+        class="btn btn btn-primary btn-block w-100 text-uppercase text-white">Try again</button>
+    </div>
+</ng-template>
+
+<script>
+  close() {
+    $("#myModal").modal("hide");
+}
+</script>

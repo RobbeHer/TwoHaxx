@@ -1,0 +1,40 @@
+footer {
+    position: fixed;
+    // height: 100px;
+    bottom: 0px;
+    width: 100%;
+    border-top: 4px solid #E9531D;
+}
+
+footer .col-4:not(:first-child) {
+    border-left: 2px solid #E9531D
+}
+
+.fas, .far {
+    line-height: 2;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.fa-2x {
+    font-size: 1.5em;
+}
+
+.bg-red {
+    background: red;
+}
+
+i {
+    color: #E9531D
+}
+
+p {
+    margin-bottom: 5px !important;
+    font-size: 0.8rem;
+    color: gray;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none !important;
+}

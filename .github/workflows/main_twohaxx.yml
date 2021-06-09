@@ -1,0 +1,35 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy container app to Azure Web App - twohaxx
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: 'ubuntu-latest'
+
+    steps:
+    - uses: actions/checkout@master
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: https://twohaxx.azurecr.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_73f1f5a4ea5141859c91f2bcd9a8d478 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_cb551ef683d44a938dc9e6132eac5e95 }}
+
+    - run: |
+        docker build . -t twohaxx.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_73f1f5a4ea5141859c91f2bcd9a8d478 }}/twohaxx-img:${{ github.sha }}
+        docker push twohaxx.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_73f1f5a4ea5141859c91f2bcd9a8d478 }}/twohaxx-img:${{ github.sha }}
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'twohaxx'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_29eb1cd8330048b195cd7156cd49af2e }}
+        images: 'twohaxx.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_73f1f5a4ea5141859c91f2bcd9a8d478 }}/twohaxx-img:${{ github.sha }}'

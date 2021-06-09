@@ -1,0 +1,55 @@
+<div class="chat_window">
+  <div class="top_menu">
+    <div class="title">Chat</div>
+    <hr>
+    <ul class="messages">
+      <div *ngFor="let chatMessage of chatMessages">
+
+        <div class="row align-items-center">
+          <div class="col-auto mr-auto">
+            <p>
+              <span class="font-weight-bold user-name">
+                {{chatMessage.User.FirstName}} {{chatMessage.User.LastName}}
+              </span> 
+              <span *ngIf="user.userID == chatMessage.UserID"><a (click)="deleteMessage(chatMessage.MessageID)"><i class="fas fa-eraser"></i></a></span>
+              <span *ngIf="user.userID == talk.moderatorID"><a (click)="deleteMessage(chatMessage.MessageID)"><i class="fas fa-eraser"></i></a></span>
+              <br>
+              {{chatMessage.Content}}
+            </p>
+          </div>
+          <div class="col-auto">
+             <button class="btn" [disabled]="userFoundInLikedBy(chatMessage)" (click)="likeMessage(chatMessage.MessageID)"><i class="far fa-thumbs-up"></i></button> <sup>{{chatMessage.Likes}}</sup>
+          </div>
+        </div>
+        <hr>
+        <p></p>
+        <!-- <button (click)="deleteMessage(chatMessage.MessageID)">Delete</button> -->
+        <!-- <button [disabled]="userFoundInLikedBy(chatMessage)" (click)="likeMessage(chatMessage.MessageID)">Like</button> -->
+
+      </div>
+    </ul>
+  </div>
+  <div class="bottom_wrapper clearfix">
+    <form [formGroup]="chatMessageForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <div class="message_input_wrapper">
+          <input id="content" class="message_input" type="text" placeholder="Type your message here..."
+            formControlName="content">
+        </div>
+        <div class="send_message">
+          <button type="submit" class="btn" [disabled]="!chatMessageForm.valid || submitted"><i
+              class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="message_template">
+  <li class="message">
+    <div class="avatar"></div>
+    <div class="text_wrapper">
+      <div class="text"></div>
+    </div>
+  </li>
+</div>
+

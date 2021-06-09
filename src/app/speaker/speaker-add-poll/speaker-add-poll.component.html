@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+      <div class="card h-100 card-signin mt-3">
+        <div class="card-body">
+          <h5 class="card-title">Add Poll</h5>
+
+          <form [formGroup]="pollForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input id="name" class="form-control" type="text" formControlName="name">
+            </div>
+            <div class="form-group pb-2">
+              <label for="question">Question</label>
+              <textarea id="question" class="form-control" type="text" formControlName="question" rows="2"></textarea>
+            </div>
+
+            <div formArrayName="pollOptions">
+
+              <h3>Options</h3>
+              <!-- <a (click)="addPollOptions()">Add Option</a> -->
+              <button type="button" class="btn btn-primary" (click)="addPollOptions()">Add Option</button>
+              <br><br>
+
+              <div class="form-group pb-2">
+                <div *ngFor="let option of pollOptions.controls; let i=index">
+                  <label>
+                    <div class="input-group mb-2 mr-sm-2">
+                      <input type="text" class="form-control" [formControlName]="i">
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn btn-primary btn-block w-100 text-uppercase text-white"
+              [disabled]="!pollForm.valid || submitted">Add new poll</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

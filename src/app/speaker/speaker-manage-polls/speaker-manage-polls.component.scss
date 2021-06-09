@@ -1,0 +1,60 @@
+.scrollable {
+    height:475px;
+    overflow-y: scroll;
+  }
+
+  .btn-primary {
+    background-color: #E9531D;
+    border-color: #E9531D;
+}
+
+.accordion-body .col-6 {
+    font-size: 14px;
+}
+
+.accordion-body {
+    background: #fafafa;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: white;
+    color: #E9531D 
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0;
+    border-color: transparent;
+    border: 1px solid rgba(0,0,0,0.125)
+}
+
+.accordion-item:first-of-type .accordion-button {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+i {
+    color: #E9531D;
+}
+
+.btn-primary {
+    background-color: #E9531D;
+    border-color: #E9531D;
+}
+
+table th, table td {
+    padding-left: 0 !important;
+}
+
+.card-body {
+    overflow-y: auto;
+}
+
+table {
+    overflow-y: scroll;
+    height: 60vh;
+    display: block;
+}
+
+.fa-2x {
+    font-size: 1.2rem;
+}

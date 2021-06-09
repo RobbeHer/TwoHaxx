@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    // background: #E9531D;
+    // background: linear-gradient(to bottom, #E9531D, #fdd4c5);
+    background: rgb(233,83,29);
+    background: linear-gradient(117deg, rgba(233,83,29,0.8827906162464986) 0%, rgba(235,151,121,0.9164040616246498) 44%, rgba(238,238,238,1) 86%);
+    height: 100vh;
+    font-size: 0.9rem !important;
+}
+
+:root {
+    --input-padding-x: 1.5rem;
+    --input-padding-y: .75rem;
+}
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
